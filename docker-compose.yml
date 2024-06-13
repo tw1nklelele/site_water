@@ -1,0 +1,23 @@
+   version: '3'
+   services:
+     php-web:
+       build:
+         context: .
+         dockerfile: Dockerfile
+       ports:
+         - "8000:80"
+       volumes:
+         - ./WaterDelivery:/var/www/html
+       depends_on:
+         - db
+     db:
+       image: mysql:8.0
+       environment:
+         MYSQL_ROOT_PASSWORD: root_password  
+         MYSQL_DATABASE: Water_delivery
+         MYSQL_USER: user
+         MYSQL_PASSWORD: 
+       ports:
+         - "3309:3308"
+
+
